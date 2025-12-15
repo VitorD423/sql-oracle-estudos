@@ -1,0 +1,89 @@
+# SQL Oracle Básico – Guia Rápido
+
+Este README reúne os comandos básicos de SQL no Oracle, focando nas operações mais usadas no dia a dia: criação de tabelas, inserção de dados, consultas, alterações de estrutura e exclusão de dados ou tabelas.
+
+CRIAR TABELA  
+Usado para criar uma nova tabela no banco de dados.
+
+CREATE TABLE usuarios (
+    id NUMBER PRIMARY KEY,
+    nome VARCHAR2(100),
+    email VARCHAR2(100),
+    idade NUMBER
+);
+
+INSERIR DADOS  
+Usado para adicionar informações dentro da tabela.
+
+INSERT INTO usuarios (id, nome, email, idade)
+VALUES (1, 'João', 'joao@email.com', 25);
+
+INSERT INTO usuarios (id, nome, email, idade)
+VALUES (2, 'Maria', 'maria@email.com', 30);
+
+CONSULTAR DADOS (SELECT)  
+Usado para buscar informações da tabela.
+
+SELECT * FROM usuarios;
+
+SELECT nome, email FROM usuarios;
+
+SELECT * FROM usuarios WHERE idade > 25;
+
+ATUALIZAR DADOS  
+Usado para alterar informações já existentes na tabela.
+
+UPDATE usuarios
+SET idade = 26
+WHERE id = 1;
+
+Sempre utilize WHERE para evitar alterar todos os registros.
+
+EXCLUIR DADOS  
+Remove registros específicos da tabela.
+
+DELETE FROM usuarios
+WHERE id = 2;
+
+EXCLUIR TABELA  
+Remove a tabela inteira do banco de dados.
+
+DROP TABLE usuarios;
+
+CRIAR COLUNA  
+Usado para adicionar uma nova coluna à tabela.
+
+ALTER TABLE usuarios
+ADD telefone VARCHAR2(20);
+
+EXCLUIR COLUNA  
+Remove uma coluna existente da tabela.
+
+ALTER TABLE usuarios
+DROP COLUMN telefone;
+
+ALTERAR COLUNA  
+Usado para modificar o tipo ou tamanho de uma coluna.
+
+ALTER TABLE usuarios
+MODIFY nome VARCHAR2(150);
+
+ORDENAR RESULTADOS  
+Usado para ordenar os dados retornados.
+
+SELECT * FROM usuarios
+ORDER BY nome ASC;
+
+SELECT * FROM usuarios
+ORDER BY idade DESC;
+
+RESUMO  
+CREATE TABLE cria tabelas  
+INSERT adiciona dados  
+SELECT consulta dados  
+UPDATE altera dados  
+DELETE remove dados  
+ALTER TABLE altera a estrutura da tabela  
+DROP TABLE exclui a tabela  
+
+Esses comandos formam a base do SQL no Oracle e são essenciais para qualquer aplicação que trabalhe com banco de dados.
