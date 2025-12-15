@@ -1,0 +1,81 @@
+# SQL Oracle – Consultas com Filtros (WHERE)
+
+Este guia mostra como buscar informações específicas em uma tabela usando filtros no Oracle SQL. O comando principal para isso é o SELECT combinado com a cláusula WHERE, que permite restringir os resultados com base em datas, números, textos ou outras condições.
+
+CONSULTAR POR DATA  
+No Oracle, datas devem ser tratadas com cuidado. O mais comum é usar TO_DATE para garantir o formato correto.
+
+SELECT * FROM pedidos
+WHERE data_pedido = TO_DATE('2025-01-10', 'YYYY-MM-DD');
+
+CONSULTAR INTERVALO DE DATAS  
+Usado quando é necessário buscar registros entre duas datas.
+
+SELECT * FROM pedidos
+WHERE data_pedido BETWEEN
+TO_DATE('2025-01-01', 'YYYY-MM-DD')
+AND
+TO_DATE('2025-01-31', 'YYYY-MM-DD');
+
+CONSULTAR DATAS MAIORES OU MENORES  
+
+SELECT * FROM pedidos
+WHERE data_pedido > TO_DATE('2025-01-01', 'YYYY-MM-DD');
+
+CONSULTAR POR OUTRAS CARACTERÍSTICAS  
+É possível filtrar por qualquer coluna da tabela, como números ou textos.
+
+SELECT * FROM usuarios
+WHERE idade >= 18;
+
+SELECT * FROM usuarios
+WHERE nome = 'Carlos';
+
+CONSULTAR COM MAIS DE UMA CONDIÇÃO  
+Use AND ou OR para combinar filtros.
+
+SELECT * FROM usuarios
+WHERE idade > 18 AND cidade = 'São Paulo';
+
+SELECT * FROM usuarios
+WHERE idade < 18 OR cidade = 'Rio de Janeiro';
+
+CONSULTAR USANDO LIKE  
+Usado para buscar valores parecidos com um padrão.
+
+SELECT * FROM usuarios
+WHERE nome LIKE 'Jo%';
+
+SELECT * FROM usuarios
+WHERE email LIKE '%@gmail.com';
+
+CONSULTAR USANDO IN  
+Usado quando o valor pode estar em uma lista.
+
+SELECT * FROM usuarios
+WHERE cidade IN ('São Paulo', 'Rio de Janeiro', 'Curitiba');
+
+CONSULTAR USANDO IS NULL  
+Usado para buscar campos vazios.
+
+SELECT * FROM usuarios
+WHERE telefone IS NULL;
+
+ORDENAR RESULTADOS  
+
+SELECT * FROM usuarios
+ORDER BY nome ASC;
+
+SELECT * FROM pedidos
+ORDER BY data_pedido DESC;
+
+RESUMO  
+WHERE filtra os registros  
+TO_DATE garante o formato correto de datas  
+BETWEEN filtra intervalos  
+AND / OR combinam condições  
+LIKE busca padrões  
+IN filtra listas  
+IS NULL busca valores vazios  
+
+Esses filtros são essenciais para extrair dados específicos do banco e são muito usados em relatórios, APIs e aplicações back-end.
