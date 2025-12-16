@@ -1,0 +1,46 @@
+# Soma no SQL Oracle
+
+No SQL Oracle, a soma é utilizada principalmente para calcular totais de valores armazenados em colunas numéricas. A função mais comum para isso é a função de agregação SUM, muito usada em relatórios, consultas financeiras e sistemas que precisam totalizar dados.
+
+Exemplo básico de soma de uma coluna:
+
+SELECT SUM(salario) FROM funcionarios;
+
+Esse comando retorna a soma de todos os valores da coluna salario da tabela funcionarios.
+
+Soma com condição (WHERE):
+
+SELECT SUM(salario)
+FROM funcionarios
+WHERE cargo = 'Desenvolvedor';
+
+Nesse caso, a soma será feita apenas sobre os registros que atendem à condição informada.
+
+Soma com mais de uma condição:
+
+SELECT SUM(valor)
+FROM vendas
+WHERE data_venda >= TO_DATE('2025-01-01', 'YYYY-MM-DD')
+AND data_venda <= TO_DATE('2025-01-31', 'YYYY-MM-DD');
+
+Soma agrupada por categoria (GROUP BY):
+
+SELECT cargo, SUM(salario)
+FROM funcionarios
+GROUP BY cargo;
+
+Esse exemplo mostra a soma dos salários agrupados por cargo.
+
+Soma com valores nulos:
+
+SELECT SUM(valor) FROM pagamentos;
+
+Valores NULL são ignorados automaticamente pela função SUM.
+
+Resumo:
+SUM é usada para somar valores de uma coluna
+WHERE filtra os registros antes da soma
+GROUP BY permite somar por grupos
+NULL não interfere no resultado da soma
+
+A função SUM é essencial para análises de dados e é uma das operações mais usadas em SQL Oracle no dia a dia.
