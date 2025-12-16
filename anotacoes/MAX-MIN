@@ -1,0 +1,50 @@
+# MAX e MIN no SQL Oracle
+
+As funções MAX e MIN são usadas no SQL Oracle para encontrar, respectivamente, o maior e o menor valor dentro de uma coluna. Elas são muito utilizadas para análises, relatórios e validações de dados, como descobrir o maior salário, a menor data ou o valor máximo de uma venda.
+
+Exemplo básico de MAX:
+
+SELECT MAX(salario) FROM funcionarios;
+
+Esse comando retorna o maior valor da coluna salario da tabela funcionarios.
+
+Exemplo básico de MIN:
+
+SELECT MIN(salario) FROM funcionarios;
+
+Esse comando retorna o menor valor da coluna salario da tabela funcionarios.
+
+MAX e MIN também podem ser usados com filtros utilizando a cláusula WHERE:
+
+SELECT MAX(valor)
+FROM vendas
+WHERE data_venda >= TO_DATE('2025-01-01', 'YYYY-MM-DD');
+
+SELECT MIN(valor)
+FROM vendas
+WHERE status = 'CANCELADA';
+
+Uso com datas:
+
+SELECT MAX(data_venda) FROM vendas;
+
+SELECT MIN(data_venda) FROM vendas;
+
+Nesse caso, o Oracle retorna a data mais recente ou a mais antiga da tabela.
+
+Uso com GROUP BY:
+
+SELECT cargo, MAX(salario), MIN(salario)
+FROM funcionarios
+GROUP BY cargo;
+
+Esse exemplo retorna o maior e o menor salário para cada cargo.
+
+Resumo:
+MAX retorna o maior valor de uma coluna
+MIN retorna o menor valor de uma coluna
+Podem ser usados com números, datas e textos
+WHERE filtra os registros antes da operação
+GROUP BY permite agrupar resultados
+
+As funções MAX e MIN são fundamentais para análises rápidas e são muito usadas em consultas SQL Oracle no dia a dia.
