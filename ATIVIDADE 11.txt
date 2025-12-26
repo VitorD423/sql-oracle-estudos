@@ -1,0 +1,67 @@
+DROP TABLE CLIENTES
+
+
+CREATE TABLE CLIENTES(
+    ID_CLIENTE NUMBER PRIMARY KEY,
+    NOME VARCHAR2(50),
+    EMAIL VARCHAR2(250),
+    DATA_CADASTRO DATE
+);
+
+
+
+/*INSIRA 3 REGISTROS NA TABELA (COM DATAS DIFERENTES DE CADASTRO)*/
+
+INSERT INTO CLIENTES (ID_CLIENTE, NOME, EMAIL, DATA_CADASTRO)
+VALUES (1, 'Vitor','vitortorres500@gmail.com', TO_DATE ('17/03/2004','DD/MM/YYYY'));
+
+INSERT INTO CLIENTES (ID_CLIENTE, NOME, EMAIL, DATA_CADASTRO)
+VALUES (2, 'Diego','Diego3124@gmail.com', TO_DATE ('03/12/2011','DD/MM/YYYY'));
+
+INSERT INTO CLIENTES (ID_CLIENTE, NOME, EMAIL, DATA_CADASTRO)
+VALUES (3, 'Torres','torres62354@gmail.com', TO_DATE ('28/02/1998','DD/MM/YYYY'));
+
+/*Selecione todos os clientes*/
+
+SELECT * FROM CLIENTES;
+
+/*Altere o email de 1 cliente*/
+
+UPDATE CLIENTES
+SET EMAIL = 'vitordiego423@gmail.com'
+WHERE ID_CLIENTE = 1;
+
+
+/*Adicione uma nova coluna chamada status (texto)*/
+
+ALTER TABLE CLIENTES ADD STATUS VARCHAR2(20);
+
+/*Atualize o status de todos para 'ATIVO'*/
+
+UPDATE CLIENTES
+SET STATUS = 'ATIVO';
+
+/*Busque apenas clientes cadastrados depois de 01/01/2025*/
+
+SELECT * FROM CLIENTES
+WHERE DATA_CADASTRO > TO_DATE('01/01/2025', 'DD/MM/YYYY');
+
+/*Busque clientes pelo nome usando LIKE (ex: nomes que começam com V)*/
+
+SELECT NOME FROM CLIENTES WHERE NOME LIKE 'V%';
+
+/*Exclua 1 cliente pelo id*/
+
+DELETE FROM CLIENTES
+WHERE ID_CLIENTE = 2;
+
+/*Exclua a tabela inteira*/
+
+DROP TABLE CLIENTES;
+
+
+
+
+
+COMMIT;
+
